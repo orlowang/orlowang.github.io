@@ -3,12 +3,9 @@
     Then we can run PostCSS on the resulting asset.
     `use` setting allow us to skip the postcss.config file.
      */}}
-    {{ $options := (dict "targetPath" "css/style.css" "enableSourceMap" true "precision" 6 "includePaths" (slice "node_modules")) }}
+    {{ $options := (dict "enableSourceMap" true "precision" 6 "includePaths" (slice "node_modules")) }}
     {{ $style := . | resources.ToCSS $options | resources.PostCSS (dict "use" "postcss-preset-env") | minify | fingerprint }}
     {{/* We fingerprint in production to ensure cache busting */}}
-    {{ if eq (getenv "HUGO_ENV") "production" }}
-      {{ $style = . | fingerprint }}
-    {{ end }}
     {{ with $style }}
       <link rel="stylesheet" href="{{ .RelPermalink }}" >
     {{ end }}
