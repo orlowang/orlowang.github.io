@@ -1,0 +1,12 @@
+baseURL: http://example.org/
+languageCode: en-us
+defaultContentLanguage: zh-cn
+title: Orlo Wang's Site
+
+minify: true
+
+params:
+  description: orlowang's site
+  summaryLength: 120
+  author: Orlo Wang
+  bio: 人生的意义在于感受，满足感源于感受度，丰富的满足感产生幸福感，强烈的满足感产生价值感；这一切都让人生显得格外有意义。

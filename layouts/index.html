@@ -1,0 +1,17 @@
+{{ define "main" }}
+<ul class="list home">
+    {{ range first 5 (where site.RegularPages "Type" "in" site.Params.mainSections).ByPublishDate.Reverse }}
+    <li>
+        <a href="{{ .RelPermalink }}" title="{{ .Name }} page">
+            <span>{{ .Name }}</span>
+            <i>{{ .Date.Format "January 2, 2006" }}</i>
+        </a>
+        {{ if eq (.Site.RegularPages.Next .) nil}}
+        <p class="summary">{{ .Summary | truncate (default 70 .Site.Params.summaryLength) }}
+            <a href="{{ .RelPermalink }}">Read More</a>
+        </p>
+        {{ end }}
+    </li>
+    {{ end }}
+</ul>
+{{ end }}

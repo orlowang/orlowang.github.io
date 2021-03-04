@@ -1,0 +1,22 @@
+{
+    "author": "orlowang",
+    "comments": {
+        "dependencies": {},
+        "devDependencies": {}
+    },
+    "dependencies": {},
+    "description": "",
+    "devDependencies": {
+        "postcss": "^8.2.6",
+        "postcss-cli": "^8.3.1",
+        "postcss-preset-env": "^6.7.0"
+    },
+    "license": "ISC",
+    "main": "index.js",
+    "name": "orlowang.github.io",
+    "scripts": {
+        "build": "HUGO_ENV=production hugo",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "version": "1.0.0"
+}

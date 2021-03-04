@@ -1,0 +1,53 @@
+{{ define "main" }}
+<section id="main">
+  <aside id="meta">
+    <section>
+      <span class="info">{{ i18n "publishedIn" }}<strong>{{ .Date.Format "Mon, Jan 2 2006" }}</strong> | </span>
+      <span class="info">{{ i18n "wordCount" . }}</span>
+      <span class="info">{{ i18n "readingTime" . }}</span>
+    </section>
+  </aside>
+  <article id="content">
+    {{ .Content }}
+  </article>
+  <section class="article">
+    {{ with .PrevInSection }}
+    <a class="previous article-link card" href="{{.RelPermalink}}">
+      <p>{{ .Date.Format "January 2, 2006" }}</p> {{.Title}}
+    </a>
+    {{ end }}
+    {{ with .NextInSection }}
+    <a class="next article-link card" href="{{.RelPermalink}}">
+      <p>{{ .Date.Format "January 2, 2006" }}</p> {{.Title}}
+    </a>
+    {{ end }}
+    {{ $related := .Site.RegularPages.Related . | first 5 }}
+    {{ with $related }}
+    <h3>See Also</h3>
+    <ul>
+      {{ range . }}
+      <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+      {{ end }}
+    </ul>
+    {{ end }}
+  </section>
+</section>
+<aside id="meta">
+  <div>
+    {{ with .Params.topics }}
+    <ul id="topics">
+      {{ range . }}
+      <li><a href="{{ " topics" | absURL}}{{ . | urlize }}">{{ . }}</a> </li>
+      {{ end }}
+    </ul>
+    {{ end }}
+    {{ with .Params.tags }}
+    <ul id="tags">
+      {{ range . }}
+      <li> <a href="{{ " tags" | absURL }}{{ . | urlize }}">{{ . }}</a> </li>
+      {{ end }}
+    </ul>
+    {{ end }}
+  </div>
+</aside>
+{{ end }}

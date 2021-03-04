@@ -1,0 +1,9 @@
+{{ $image_path := printf "%s%s" .Page.File.Dir (.Destination | safeURL) }}
+{{ $image_path = printf "content/%s" $image_path}}
+{{ $image := imageConfig $image_path }}
+{{ $rale := div (mul $image.Height 100.0) $image.Width }}
+{{ $rale_s := printf "%s%s" (string $rale) "%" }}
+{{ $style := printf "padding-bottom:%s;" $rale_s }}
+<div class="image" {{ printf "style=%s" $style | safeHTMLAttr }}>
+    <img src="{{ .Destination | safeURL }}" alt="{{ .Text }}" loading="lazy" />
+</div>
